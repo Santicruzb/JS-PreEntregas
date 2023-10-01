@@ -1,49 +1,50 @@
 
-if (
-	confirm(
-		"¡Bienvenido a mi morada!\n\nPara poder entrar vas a tener que pasar 1 desafio.\n Estoy pensando en un número del 1 al 100.\nTu objetivo es adivinar ese número para que puedas pasar.\nPuedes ingresar tu suposición y te diré si es mayor o menor.\n\n Buena suerte.",
-	)
-) {
-	// El juego comienza
-	const numeroAleatorio = 13;
-	let intentos = 0;
-	let adivinanza = true;
-	console.log(numeroAleatorio);
-	// Bucle while para permitir múltiples intentos
-	while (adivinanza) {
-		// Solicitar al usuario que ingrese un número
-		const numeroUsuario = prompt("Adivina el número (entre 1 y 100):");
-		intentos++;
-		if (isNaN(numeroUsuario)) {
-			alert("Por favor, ingresa un número válido.");
-		} else {
-			// Convertir la entrada del usuario a un número entero
-			const numeroElegido = parseInt(numeroUsuario);
-			// Comprobar si el número es igual al número aleatorio
-			if (numeroElegido === numeroAleatorio) {
-				adivinanza = false;
-				alert(`¡Felicidades! Adivinaste el número en ${intentos} intentos.`);
-			} else if (numeroElegido < numeroAleatorio) {
-				alert("El número es mayor. Intenta nuevamente.");
-			} else {
-				alert("El número es menor. Intenta nuevamente.");
-			}
-		}
-	}
-} else {
-	// El usuario canceló
-	alert("¡Gracias por visitar! Si deseas jugar más tarde, simplemente actualiza la página.");
+let palabras = [
+   "maestro",
+  "educacion",
+  "universidad",
+  "estudiar", 
+  "coderhouse"
+]
+let palabra = palabras [Math.floor(Math.random() * palabras.length)]
+// console.log(palabra) -> para verificar que se elige un nombre random 
+let respuesta = []
+for (let i = 0; i <palabra.length; i++) {
+  respuesta [i] = "_";
 }
+let letrasRestantes = palabra.length
+//console.log (respuesta) -> para verificar que el bucle for imprima bien las "_"
+// al promt ponerle un .lowercase
+do{
+  let adivinar = prompt("Adivina una letra, o hace click en Cancel para dejar de jugar");
+  console.log(respuesta)
+  const letraMinuscula = adivinar.toLowerCase ()
+  if (letraMinuscula === null) {
+     break;}
+     else if (letraMinuscula.length !== 1) {
+     alert ("Porfavor escribir 1 letra a la vez.")} 
+     else { for (let j = 0; j<palabra.length ;j++) {
+      if (palabra[j] === letraMinuscula) {
+      //console.log(adivinar, palabra[j])
+       respuesta[j] = palabra[j] 
+      }
+     }
+     alert(respuesta.join(""))
+   }
+}
+ while (respuesta.includes("_")) 
+ /*let adivinar = prompt("Adivina una letra, o hace click en Cancel para dejar de jugar");
+ if (adivinar === null) {
+    break;} 
+    else if (adivinar.length !== 1) {
+    alert ("Porfavor escribir 1 letra a la vez.")} 
+    else { for (let j = 0; j<palabra.length ;j++) {
+     if (palabra[j] === adivinar) {
+      console.log(adivinar, palabra[j])
+      respuesta[j] = palabra[j] 
+     }
+    }
+  }
+} */
 
-
-
-
-
-
-
-
-
-
-
-
-
+alert("Terminaste flaco, sos buenisimo, la palabra era " + palabras)
